@@ -35,8 +35,8 @@ def main():
 
     emb_array = np.array(emb)
     paths_array = np.array(paths)
-    np.save("../../data/processed/df_embedding", emb_array)
-    np.save("../../data/processed/df_paths", paths_array)
+    np.save(__file__ + "../../data/processed/df_embedding", emb_array)
+    np.save(__file__ + "../../data/processed/df_paths", paths_array)
     print("Embedding created")
 
 
