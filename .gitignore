@@ -67,6 +67,10 @@ fabric.properties
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
 
-data
+data/raw/
+data/*.npy
+models/*.h5
 */__pycache__/
-results
+results/
+*.py[cod]
+.idea/
