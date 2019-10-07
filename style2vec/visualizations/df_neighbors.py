@@ -30,9 +30,9 @@ def main():
     plt.figure(figsize=(20, 20))
     chosen = np.random.choice(len(paths), 5000, replace=False)
     dist, n = fixed_nearest_neighbors(args.emb_path_in, chosen, 20)
-    get_stats(n, paths, items, args.attr_types_path, imagenet=True)
+    evaluate(n, paths, items, args.attr_types_path, imagenet=True)
     dist, n = fixed_nearest_neighbors(args.emb_path, chosen, 20)
-    get_stats(n, paths, items, args.attr_types_path, imagenet=False)
+    evaluate(n, paths, items, args.attr_types_path, imagenet=False)
     show()
     # dist, n = nearest_neighbors(args.emb_path, 20000, 25)
     # get_stats(n, paths, items, args.attr_types_path)
@@ -42,7 +42,15 @@ def main():
     # get_stats(n, paths, items, args.attr_types_path)
 
 
-def get_stats(n, paths, items, attr_types_path, imagenet=False):
+def evaluate(n, paths, items, attr_types_path, imagenet=False):
+    """
+    Evaluate given embedding and plot the results
+    :param n: Neighbors array
+    :param paths: List of paths to images
+    :param items: Parsed items
+    :param attr_types_path: Path to attr types file
+    :param imagenet: Is imagenet embedding?
+    """
     if imagenet:
         colors = ['lightskyblue', 'blue']
     else:
@@ -88,6 +96,9 @@ def get_stats(n, paths, items, attr_types_path, imagenet=False):
 
 
 def show():
+    """
+    Show the plot and save it to a file
+    """
     plt.legend(loc='upper right')
     filepath = os.path.dirname(os.path.realpath(__file__)) + "/../../results/fig" + datetime.datetime.now().strftime(
         "%Y%m%d-%H%M%S") + ".png"
@@ -97,6 +108,13 @@ def show():
 
 
 def compare_attributes(item, neighbor, type_mask=None):
+    """
+    Compute Jaccard index of two items
+    :param item: Original item
+    :param neighbor: One of neighbors
+    :param type_mask: Attributes restriction
+    :return: Jaccard index
+    """
     union = 0
     intersection = 0
     if type_mask is None:
@@ -115,6 +133,12 @@ def compare_attributes(item, neighbor, type_mask=None):
 
 
 def count_attributes(item, type_mask=None):
+    """
+    Count number of attributes of given item
+    :param item: Parsed item
+    :param type_mask: Attributes restriction
+    :return:
+    """
     count = 0
     if type_mask is None:
         type_mask = range(len(item.attributes))

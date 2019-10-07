@@ -1,10 +1,7 @@
 import json
-import random
 import numpy as np
 import tensorflow as tf
-import math
 from pathlib import Path
-import matplotlib.pyplot as plt
 from style2vec.models.style2vec import Style2Vec
 
 

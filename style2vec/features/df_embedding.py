@@ -7,6 +7,9 @@ from style2vec.models.style2vec import Style2Vec
 
 
 def main():
+    """
+    Create Deep Fashion dataset embedding
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("--attr-path", type=str, help="Path to item attributes data")
     parser.add_argument("--bbox-path", type=str, help="Path to item bounding boxes")

@@ -5,6 +5,9 @@ import os
 
 
 def main():
+    """
+    Deep Fashion dataset exploration
+    """
     parser = argparse.ArgumentParser()
     parser.add_argument("--attr-path", type=str, help="Path to item attributes data")
     parser.add_argument("--bbox-path", type=str, help="Path to item bounding boxes")

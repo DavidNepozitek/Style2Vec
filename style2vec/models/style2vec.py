@@ -142,12 +142,6 @@ HP_FINE_TUNE = hp.HParam('fine_tune', hp.Discrete([True, False]))
 
 METRIC_ACCURACY = 'accuracy'
 
-# with tf.summary.FileWriter('logs/' + date + '/hparam_tuning'):
-#     hp.hparams_config(
-#         hparams=[HP_BATCH_SIZE, HP_NEGATIVE_SAMPLES, HP_OPTIMIZER],
-#         metrics=[hp.Metric(METRIC_ACCURACY, display_name='Accuracy')],
-#         )
-
 hyperparams = {
     HP_BATCH_SIZE: 5,
     HP_NEGATIVE_SAMPLES: 6,
