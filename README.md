@@ -20,7 +20,7 @@ Implementation of fashion products vector representation based on [Style2Vec: Re
 
 ## Results
 Sequence of nearest neighbors from Style2Vec embedding on each line:
-![](figures/nnstyle2vec.png)
+![](docs/figures/nnstyle2vec.png)
 
 ## Project Organization
 
