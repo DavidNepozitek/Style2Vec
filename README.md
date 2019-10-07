@@ -56,4 +56,4 @@ Sequence of nearest neighbors from Style2Vec embedding on each line:
             ├── df_exploration.py     <- Deep Fashion dataset statistical exploration
             ├── df_neighbors.py       <- Model validation
             ├── n_neighbors.py        <- sk-learn n-neighbors wrapper
-            └── polyvore_neighbord.py <- Nearest neighbors visualization of Polyvore dataset embedding
+            └── polyvore_neighbors.py <- Nearest neighbors visualization of Polyvore dataset embedding
