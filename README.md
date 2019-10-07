@@ -32,6 +32,7 @@ Sequence of nearest neighbors from Style2Vec embedding on each line:
     │   └── raw            <- The original, immutable data dump.
     │
     ├── docs               <- Project documentation and reports
+    │   └── report.md      <- Project report
     │
     ├── models             <- Trained and serialized models, model predictions, or model summaries
     |
@@ -40,10 +41,10 @@ Sequence of nearest neighbors from Style2Vec embedding on each line:
         │   │
         │   ├── deepfashion_prep.py <- DF dataset preprocessing
         |   ├── sample_generator.py <- Samples generator for model training
-        │   └── preprocessing.py <- Image preprocessing
+        │   └── preprocessing.py    <- Image preprocessing
         │
-        ├── features    <- Scripts to turn raw data into features for modeling
-        |   ├── df_embedding.py <- Deepfashion dataset embedding
+        ├── features       <- Scripts to turn raw data into features for modeling
+        |   ├── df_embedding.py       <- Deepfashion dataset embedding
         │   └── polyvore_embedding.py <- Polyvore dataset embedding
         │
         ├── models         <- Scripts to train models and then use trained models to make predictions
@@ -52,7 +53,7 @@ Sequence of nearest neighbors from Style2Vec embedding on each line:
         └── visualization  <- Scripts to create exploratory and results oriented visualizations
             │
             ├── df_attr_comparison.py <- Visualization of nearest negihbors with their attributes
-            ├── df_exploration.py <- Deep Fashion dataset statistical exploration
-            ├── df_neighbors.py <- Model validation
-            ├── n_neighbors.py <- sk-learn n-neighbors wrapper
+            ├── df_exploration.py     <- Deep Fashion dataset statistical exploration
+            ├── df_neighbors.py       <- Model validation
+            ├── n_neighbors.py        <- sk-learn n-neighbors wrapper
             └── polyvore_neighbord.py <- Nearest neighbors visualization of Polyvore dataset embedding

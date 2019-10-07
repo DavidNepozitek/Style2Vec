@@ -44,8 +44,8 @@ The model is constructed with Keras Functional API. Two InceptionV3 networks are
 We wanted to test the hypothesis, that products close to each other in the embedding share the same style. To validate this hypothesis, we decided to check the relation of embedding vector distance with number of common attributes of the products, that is why we used the above-mentioned validation dataset. 
 Method:
 1. For large number of randomly chosen samples we find their nearest neighbors.
-2. For each neighbor we compute the Jaccard index with the original item, so for each sample chosen in step 1, we get a sequence of indices.
-3. We average all the sequence obtained from step 2.
+2. For each neighbor we compute the Jaccard index with the original item, so for each sample chosen in step 1 we get a sequence of indices.
+3. We average all the sequences obtained from step 2.
 
 We applied this method for our model and compared it with the original InceptionV3 model trained for ImageNet task (further as ImagetNet model). 
 
@@ -69,7 +69,7 @@ On figures below, the horizontal axis represent the order from the original item
 ![](figures/fig20191007-111245.png)
 
 ### Texture, fabric and style related attributes
-![](figures/fig20191007-115028.png)
+![](figures/fig20191007-182407.png)
 ### Shape and part related attributes
 ![](figures/fig20191007-102348.png)
 
@@ -79,21 +79,19 @@ On figures below, the horizontal axis represent the order from the original item
 ### All attributes with more than 500 products
 ![](figures/fig20191007-175301.png)
 
-
-
 ### Validation dataset suitability
-We questioned the dataset suitability for our validation task. We came to the conclusion that the attribute labeling is not precise enough for our task. We found following problems:
+We questioned the dataset suitability for our validation task. We came to the conclusion that the attribute labeling may not be precise enough for our task. We found following problems:
 1. __Same product with different attributes__
-On figure below you can see two samples of the same product and their attributes. It is common that even same products have very similar attributes.
+On figure below you can see two samples of the same product and their attributes. It is common that even same products have different attributes.
 ![](figures/same_product.JPG)
 2. __Sparsity__
-Another problem is that the labeling is quite sparse in that manner that products are often not labeled with their evident attributes and that is why the number of attributes of each item is that low. As you can see neither of the dresses below have part related attribute nor color attribute in spite of that those attributes are present in the dataset.
+Another problem is that the labeling is quite sparse meaning that products are often not labeled with their evident attributes and that is why the number of attributes of each item is that low. As you can see neither of the dresses below have part related attribute nor color attribute in spite of that those attributes are present in the dataset.
 ![](figures/sparsity.JPG)
 3. __Too specific attributes__
-As you could deduce from the data description above, majority of the attributes are too specific. That is not convenient for our task, because our model has no ambition to learn those specific attributes. This problem could be solved by removing too specific attributes, but that would exacerbate the sparsity problem.
+As you could deduce from the data description above, majority of the attributes are too specific. That is not convenient for our task, because our model has no ambition to learn those specific attributes. This problem could be solved by removing those attributes, but that exacerbates the sparsity problem.
 
 ## Conclusion
-We implemented and trained the Style2Vec model, however the performance of the model stays unclear because of the unconvincing validation data. The question arose whether our expectation that products close to each other would have similar attributes is valid or we should choose completely different validation task.
+We implemented and trained the Style2Vec model. Judging from the visualization, the model creates an embedding, where items of similar colours and textures are close to each other. However the performance of the model stays unclear because of the unconvincing validation task and data. The question arose whether our expectation that products close to each other would have similar attributes is valid or we should choose completely different validation task.
 
 
 [^1]: [Style2Vec: Representation Learning for Fashion Items from Style Sets](https://arxiv.org/abs/1708.04014)
