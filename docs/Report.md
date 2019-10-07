@@ -12,6 +12,7 @@ _Polyvore Dataset_[^2] was used for training the model. It is made out of outfit
 
 ### Validation Data
 For model evaluation _DeepFashion: Attribute Prediction Dataset_[^3] was used. It contains 289,222 images of fashion products, some of them on white background but most of them worn by models. We used the validation partition of this dataset containing 40,000 items. That is why bounding boxes are provided to eliminate the noise of the background. There are 1,000 item attributes divided into 5 attribute types - texture-related, fabric-related, shape-related, part-related and style-related attributes. The distribution of number of attributes for each item is as follows:
+
 |Property|Value|
 |--|--|
 |__Mean:__   |  3.31|
@@ -21,7 +22,9 @@ For model evaluation _DeepFashion: Attribute Prediction Dataset_[^3] was used. I
 |__50%:__ | 3|
 |__75%:__ |4|
 |__Maximum:__ | 15|
+
 The following table describes the distribution of number of items with selected attribute.
+
 |Property|Value|
 |--|--|
 |__Mean:__   |  132|
