@@ -14,6 +14,9 @@ Implementation of fashion products vector representation based on [Style2Vec: Re
 - Tensorflow > 1.14
 - Matplotlib
 - scikit-learn
+- Pillow
+- scipy
+- pandas
 
 ## Results
 Sequence of nearest neighbors from Style2Vec embedding on each line:
