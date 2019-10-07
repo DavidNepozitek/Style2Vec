@@ -3,6 +3,7 @@ import argparse
 import tensorflow as tf
 import numpy as np
 from style2vec.data import deepfashion_prep as preprocessing
+from style2vec.models.style2vec import Style2Vec
 
 
 def main():
@@ -15,22 +16,10 @@ def main():
     args = parser.parse_args()
     items = preprocessing.parse(args.attr_path, args.bbox_path, args.part_path, "val")
     print(str(len(items)) + " items parsed")
-    input_target = tf.keras.layers.Input((299, 299, 3))
-    target = tf.keras.applications.inception_v3.InceptionV3(  # type: tf.keras.models.Model
-        include_top=False,
-        pooling='avg',
-        input_tensor=input_target
-    )
 
-    # Rename layers
-    for i, layer in enumerate(target.layers):
-        layer._name = 'target_' + str(i)
-        if i == len(target.layers) - 1:
-            layer._name = 'target_last_layer'
-
-    print("Model created")
+    model = Style2Vec("train_no_dup_out.json", "../data/images/", batch_size=1, outfits_count_limit=3)
+    target = model.model_target  # type: tf.keras.models.Model
     target.load_weights(args.model_path, True)
-    print("Weights loaded")
 
     emb, paths = preprocessing.get_embedding(target, items, args.img_base_dir)
 
@@ -39,8 +28,8 @@ def main():
     emb_array = np.array(emb)
     paths_array = np.array(paths)
     print(emb_array.shape)
-    np.save(os.path.dirname(os.path.realpath(__file__)) + "/../../data/processed/df_embedding", emb_array)
-    np.save(os.path.dirname(os.path.realpath(__file__)) + "/../../data/processed/df_paths", paths_array)
+    np.save(os.path.dirname(os.path.realpath(__file__)) + "/../../data/processed/df_embedding_rel", emb_array)
+    np.save(os.path.dirname(os.path.realpath(__file__)) + "/../../data/processed/df_paths_rel", paths_array)
     print("Embedding created")
 
 main()
